@@ -65,13 +65,13 @@ def scrape_site(driver, search_term):
             'title_xpath': './/*[@class="LatestNews-headline\"]',
             'url_xpath': './/*[@class="LatestNews-headline\"]'
         },
-        
+        {
             'name': 'Yahoo Finance',
             'url': f"https://finance.yahoo.com/quote/{search_term}/news",
             'article_xpath': '//*[@class="stream-item story-item yf-1usaaz9\"]',
             'title_xpath': './/*[@class="clamp  yf-1sxfjua\"]',
             'url_xpath': './/*[@class="subtle-link fin-size-small titles noUnderline yf-1e4diqp\"]'
-         },
+        },
         {
             'name': 'Business Insider',
             'url': f"https://markets.businessinsider.com/news/{search_term}-stock",
