@@ -31,7 +31,10 @@ def scrape_articles(driver, site_url, article_xpath, title_xpath, url_xpath):
     """Scrapes articles from the given site URL."""
     logging.info(f"Scraping {site_url} ...")
     driver.get(site_url)
-    driver.implicitly_wait(0.5)
+
+    WebDriverWait(driver, 10).until(
+    EC.presence_of_element_located((By.XPATH, article_xpath))
+    )
     
     articles = driver.find_elements(By.XPATH, article_xpath)
     article_data = []
@@ -97,7 +100,7 @@ def save_to_json(data, search_term):
 
 def main(search_term, driver_path=None):
     """Main function to initialize scraping."""
-    driver = init_driver(driver_path,False)
+    driver = init_driver(driver_path)
     
     try:
         all_articles = scrape_site(driver, search_term)
